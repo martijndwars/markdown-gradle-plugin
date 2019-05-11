@@ -20,7 +20,7 @@ This plugin adds the following tasks:
 
 ```groovy
 plugins {
-    id 'nl.martijndwars.markdown' version '0.1.0-SNAPSHOT'
+    id 'nl.martijndwars.markdown' version '0.1.0'
     id 'maven-publish'
 }
 
