@@ -1,0 +1,8 @@
+pluginManagement {
+  repositories {
+    mavenLocal()
+    jcenter()
+  }
+}
+
+rootProject.name = 'simple'

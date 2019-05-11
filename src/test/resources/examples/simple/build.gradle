@@ -1,0 +1,37 @@
+plugins {
+    id 'nl.martijndwars.markdown' version '0.1.0'
+    id 'maven-publish'
+}
+
+group = 'org.example'
+version = '1.2.3'
+description = 'Simple example'
+
+repositories {
+    jcenter()
+}
+
+compileMarkdownToHtml {
+    inputFile = file("text.md")
+}
+
+compileHtmlToPdf {
+    outputFile = file("$buildDir/text.pdf")
+}
+
+compileHtmlToPdf.inputFile = compileMarkdownToHtml.outputFile
+compileMarkdownToHtml.outputFile = file("$buildDir/text.html")
+
+task textZip(type: Zip) {
+    destinationDirectory = file("$buildDir/dist")
+
+    from compileHtmlToPdf.outputFile
+}
+
+publishing {
+    publications {
+        simple(MavenPublication) {
+            artifact textZip
+        }
+    }
+}

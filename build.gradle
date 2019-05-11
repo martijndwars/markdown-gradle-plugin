@@ -1,0 +1,102 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'signing'
+    id 'com.gradle.plugin-publish' version '0.10.0'
+}
+
+wrapper {
+    gradleVersion = '5.4.1'
+}
+
+group 'nl.martijndwars'
+version '0.1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation group: 'com.atlassian.commonmark', name: 'commonmark', version: commonMarkVersion
+    implementation group: 'com.atlassian.commonmark', name: 'commonmark-ext-gfm-tables', version: commonMarkVersion
+    implementation group: 'org.jsoup', name: 'jsoup', version: jsoupVersion
+    implementation group: 'org.xhtmlrenderer', name: 'flying-saucer-core', version: flyingSaucerVersion
+    implementation group: 'org.xhtmlrenderer', name: 'flying-saucer-pdf-itext5', version: flyingSaucerVersion
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVersion
+    testRuntime group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVersion
+
+    // See https://intellij-support.jetbrains.com/hc/en-us/community/posts/360002590379/comments/360000316199
+    testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: junitVersion
+    testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.3.1'
+}
+
+compileJava {
+    options.compilerArgs += '-Xlint:deprecation'
+}
+
+pluginBundle {
+    website = 'https://github.com/MartijnDwars/markdown-gradle-plugin'
+    vcsUrl = 'https://github.com/MartijnDwars/markdown-gradle-plugin'
+    tags = ['markdown', 'html', 'pdf']
+}
+
+gradlePlugin {
+    plugins {
+        markdownPlugin {
+            id = 'nl.martijndwars.markdown'
+            displayName = 'Markdown Gradle Plugin'
+            description = 'Compile Markdown to PDF using Gradle.'
+            implementationClass = 'nl.martijndwars.markdown.MarkdownPlugin'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+        exceptionFormat 'full'
+    }
+}
+
+task javadocJar(type: Jar) {
+    archiveClassifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            pom {
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'martijndwars'
+                        name = 'Martijn Dwars'
+                        email = 'ikben@martijndwars.nl'
+                    }
+                }
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
