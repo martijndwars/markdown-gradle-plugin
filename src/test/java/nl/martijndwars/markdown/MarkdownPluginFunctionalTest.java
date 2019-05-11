@@ -17,7 +17,7 @@ public class MarkdownPluginFunctionalTest {
     void testSimpleProject() {
         File projectDir = new File(BASE_DIR + "/simple");
 
-        TaskOutcome taskOutcome = runGradleTask(projectDir, ":compileHtml");
+        TaskOutcome taskOutcome = runGradleTask(projectDir, ":compileHtmlToPdf");
 
         assertEquals(SUCCESS, taskOutcome);
     }
