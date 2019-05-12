@@ -1,6 +1,6 @@
-# 0.1.1-SNAPHSOT
+# 0.2.0
 
-(Stub)
+* Add `compileMarkdownToPdf` task that directly compiles HTML to PDF.
 
 # 0.1.0
 

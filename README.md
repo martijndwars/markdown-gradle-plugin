@@ -24,7 +24,7 @@ This plugin adds the following tasks:
 
 ```groovy
 plugins {
-    id 'nl.martijndwars.markdown' version '0.1.0'
+    id 'nl.martijndwars.markdown' version '0.2.0'
     id 'maven-publish'
 }
 
