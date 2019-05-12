@@ -16,8 +16,9 @@ Applying this plugin implicitly applies the base plugin to your project.
 
 This plugin adds the following tasks:
 
-* _compileMarkdownToHtml_: Compile Markdown file to HTML file.
-* _compileHtmlToPdf_: Compile HTML file to PDF file.
+* _compileMarkdownToHtml_: Compile a Markdown file to a HTML file.
+* _compileHtmlToPdf_: Compile a HTML file to a PDF file.
+* _compileMarkdownToPdf_: Compile a Markdown file to a PDF file (uses above tasks internally).
 
 ## Example
 

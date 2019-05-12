@@ -22,6 +22,15 @@ public class MarkdownPluginFunctionalTest {
         assertEquals(SUCCESS, taskOutcome);
     }
 
+    @Test
+    void testCombinedProject() {
+        File projectDir = new File(BASE_DIR + "/combined");
+
+        TaskOutcome taskOutcome = runGradleTask(projectDir, ":compileMarkdownToPdf");
+
+        assertEquals(SUCCESS, taskOutcome);
+    }
+
     protected TaskOutcome runGradleTask(File projectDir, String task) {
         BuildResult buildResult = runGradle(projectDir, "clean", task);
 

@@ -15,5 +15,6 @@ public class MarkdownPlugin implements Plugin<Project> {
 
         project.getTasks().register("compileMarkdownToHtml", CompileMarkdownToHtmlTask.class);
         project.getTasks().register("compileHtmlToPdf", CompileHtmlToPdfTask.class);
+        project.getTasks().register("compileMarkdownToPdf", CompileMarkdownToPdf.class);
     }
 }
