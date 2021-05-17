@@ -30,7 +30,7 @@ dependencies {
 
     // See https://intellij-support.jetbrains.com/hc/en-us/community/posts/360002590379/comments/360000316199
     testRuntimeOnly group: 'org.junit.vintage', name: 'junit-vintage-engine', version: junitVersion
-    testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.7.1'
+    testRuntimeOnly group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.7.2'
 }
 
 compileJava {
