@@ -1,8 +1,8 @@
 package nl.martijndwars.markdown;
 
+import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.file.RegularFileProperty;
-import org.gradle.api.internal.AbstractTask;
 import org.gradle.api.tasks.InputFile;
 import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.TaskAction;
@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class CompileMarkdownToPdf extends AbstractTask {
+public class CompileMarkdownToPdf extends DefaultTask {
     protected final RegularFileProperty inputFile;
     protected final RegularFileProperty outputFile;
 

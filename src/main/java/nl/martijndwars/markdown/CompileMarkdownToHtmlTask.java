@@ -5,8 +5,8 @@ import org.commonmark.ext.gfm.tables.TablesExtension;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
+import org.gradle.api.DefaultTask;
 import org.gradle.api.file.RegularFileProperty;
-import org.gradle.api.internal.AbstractTask;
 import org.gradle.api.tasks.InputFile;
 import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.TaskAction;
@@ -18,7 +18,7 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
-public class CompileMarkdownToHtmlTask extends AbstractTask {
+public class CompileMarkdownToHtmlTask extends DefaultTask {
     protected final RegularFileProperty inputFile;
     protected final RegularFileProperty outputFile;
 

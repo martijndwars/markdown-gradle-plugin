@@ -1,8 +1,8 @@
 package nl.martijndwars.markdown;
 
 import com.itextpdf.text.DocumentException;
+import org.gradle.api.DefaultTask;
 import org.gradle.api.file.RegularFileProperty;
-import org.gradle.api.internal.AbstractTask;
 import org.gradle.api.tasks.InputFile;
 import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.TaskAction;
@@ -12,7 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-public class CompileHtmlToPdfTask extends AbstractTask {
+public class CompileHtmlToPdfTask extends DefaultTask {
     protected final RegularFileProperty inputFile;
     protected final RegularFileProperty outputFile;
 
