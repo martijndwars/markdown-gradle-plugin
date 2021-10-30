@@ -8,6 +8,7 @@ import org.commonmark.renderer.html.HtmlRenderer;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.tasks.InputFile;
+import org.gradle.api.tasks.Internal;
 import org.gradle.api.tasks.OutputFile;
 import org.gradle.api.tasks.TaskAction;
 import org.jsoup.Jsoup;
@@ -44,6 +45,7 @@ public class CompileMarkdownToHtmlTask extends DefaultTask {
         writeOutput(output);
     }
 
+    @Internal
     protected String getInputString() throws IOException {
         Path inputPath = inputFile.get().getAsFile().toPath();
 
@@ -63,18 +65,21 @@ public class CompileMarkdownToHtmlTask extends DefaultTask {
         Files.write(outputPath, output.getBytes());
     }
 
+    @Internal
     protected Parser getOrCreateParser() {
         return Parser.builder()
                 .extensions(getCommonMarkExtensions())
                 .build();
     }
 
+    @Internal
     protected HtmlRenderer getOrCreateHtmlRenderer() {
         return HtmlRenderer.builder()
                 .extensions(getCommonMarkExtensions())
                 .build();
     }
 
+    @Internal
     protected List<Extension> getCommonMarkExtensions() {
         return Arrays.asList(TablesExtension.create());
     }
