@@ -1,6 +1,6 @@
-# 0.2.1-SNAPSHOT
+# 0.2.1
 
-(Stub)
+* Gradle 7 compatibility (in #47 by @charkins).
 
 # 0.2.0
 
